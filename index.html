@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="./script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --font-display: "Poppins", "sans-serif";
+
+        --color-primary: #fa4e26;
+        --color-bg-primary: #f5f5f5;
+        --color-bg-secondary: #ffffff;
+        --color-text-gray: #858585;
+        --color-text-red: #ed2323;
+        --color-blackish: #333;
+      }
+
+      .categories-dropdown {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out; /* Smooth animation */
+        /* visibility: hidden; */
+        /* opacity: 0; */
+      }
+
+      /* Class to show the dropdown */
+      .categories-dropdown.show {
+        max-height: 500px; /* Adjust this value based on your content height */
+        /* visibility: visible; */
+        /* opacity: 1; */
+      }
+
+      /* Optional: Add smooth hover transitions for list items */
+      .categories-dropdown li {
+        transition: background-color 0.2s ease, color 0.1s ease;
+      }
+    </style>
+    <style>
+      /* Swiper  */
+      .swiper {
+        background: #333;
+        max-height: 500px;
+      }
+      body {
+        color: white;
+      }
+      .swiper-pagination-bullet {
+        background-color: #ffffff;
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: #fa4e26;
+      }
+      .swiper-slide img {
+        object-fit: cover;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+
+  <body class="bg-bg-primary font-display">
+    <!-- Header Start -->
+    <header class="container mx-auto bg-bg-secondary">
+      <!-- Login -->
+      <div
+        class="px-4 xl:px-40 py-2 flex justify-between items-center text-sm border-b-2 border-b-gray-200"
+      >
+        <div class="text-text-gray">
+          <span>Shopping Hotline: </span>
+          <span class="text-text-red">(+1)012345-6789</span>
+        </div>
+        <div>
+          <div class="flex items-center text-text-gray">
+            <ion-icon
+              class="w-6 h-6 mr-2"
+              name="person-circle-outline"
+            ></ion-icon>
+            <span class="hover:text-primary"><a href="">Login</a></span>
+            <span class="mx-1">or</span>
+            <span class="hover:text-primary"><a href="">Register</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart -->
+      <div class="px-4 xl:px-40 py-2 flex justify-between items-center pt-3">
+        <div>
+          <h3 class="text-3xl font-bold cursor-pointer text-blackish">
+            My <span class="text-primary">Shop</span>
+          </h3>
+        </div>
+
+        <div class="relative hidden xl:block">
+          <input
+            class="border-1 border-primary outline-none rounded md:w-[480px] h-10 pl-5"
+            type="text"
+            name=""
+            id=""
+            placeholder="Search..."
+          />
+          <div
+            class="bg-primary absolute h-10 top-0 right-0 w-12 flex justify-center items-center cursor-pointer"
+          >
+            <ion-icon
+              class="text-bg-secondary w-5 h-5"
+              name="search-outline"
+            ></ion-icon>
+          </div>
+        </div>
+
+        <div class="flex space-x-8">
+          <div class="relative">
+            <ion-icon
+              class="w-10 h-10 text-primary"
+              name="cart-outline"
+            ></ion-icon>
+            <span
+              class="bg-primary text-bg-secondary rounded-full w-5 h-5 flex items-center justify-center text-xs absolute left-[30px] bottom-[30px]"
+              >16</span
+            >
+          </div>
+
+          <div class="text-sm text-text-gray">
+            <p>My Cart</p>
+            <p>$0.00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <nav
+          class="xl:px-40 flex items-center space-x-8 bg-primary text-bg-secondary h-10"
+        >
+          <div
+            class="flex justify-center items-center bg-blackish px-10 h-full cursor-pointer relative"
+          >
+            <div class="flex justify-center items-center space-x-2 categories">
+              <ion-icon class="w-7 h-7" name="menu-outline"></ion-icon>
+              <span>Categories</span>
+            </div>
+            <ul
+              class="absolute top-[43px] bg-bg-secondary text-blackish min-w-full text-center categories-dropdown z-40"
+            >
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                <a href="">Something</a>
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+              <li
+                class="border-b border-b-gray-200 py-2 hover:bg-blackish hover:text-bg-secondary"
+              >
+                Something
+              </li>
+            </ul>
+          </div>
+          <ul class="h-full hidden lg:flex">
+            <li>
+              <a
+                class="h-full flex items-center px-5 hover:bg-blackish transition-colors duration-300 ease-in-out"
+                href=""
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="h-full flex items-center px-5 hover:bg-blackish transition-colors duration-300 ease-in"
+                href=""
+                >Promotions</a
+              >
+            </li>
+            <li>
+              <a
+                class="h-full flex items-center px-5 hover:bg-blackish transition-colors duration-300 ease-in"
+                href=""
+                >Wholesale</a
+              >
+            </li>
+            <li>
+              <a
+                class="h-full flex items-center px-5 hover:bg-blackish transition-colors duration-300 ease-in"
+                href=""
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="h-full flex items-center px-5 hover:bg-blackish transition-colors duration-300 ease-in"
+                href=""
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Main Start -->
+
+    <!-- Slider Section -->
+    <section class="xl:px-40 container mx-auto">
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide"><img src="./images/1.webp" alt="" /></div>
+          <div class="swiper-slide"><img src="./images/2.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./images/3.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./images/4.jpg" alt="" /></div>
+          <div class="swiper-slide"><img src="./images/5.avif" alt="" /></div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Card Section -->
+    <section class="xl:px-40 container mx-auto">
+      <div class="pt-10 pb-4">
+        <p class="text-blackish text-2xl font-semibold pl-4">Just for You!!</p>
+      </div>
+
+      <div class="bg-bg-secondary p-4 flex justify-between flex-wrap space-y-4">
+        <!-- Card -->
+        <div
+          class="card w-[170px] md:w-[200px] h-[300px] rounded overflow-hidden border border-gray-200 shadow-md shadow-gray-400"
+        >
+          <div class="h-[140px]"><img class="object-cover h-full w-full" src="./images/1.webp" alt="" /></div>
+          <div class="p-2">
+            <p class="text-sm text-black">Something</p>
+            <p class="text-xs py-1 text-blackish">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid.</p>
+            <p class="text-primary">$100</p>
+            <div class="text-center"><button class="bg-primary rounded text-sm p-2 cursor-pointer hover:scale-[1.1] transition-scale duration-100 ease-linear">Add to Cart</button></div>
+          </div>
+        </div>
+
+        <div
+          class="card w-[170px] md:w-[200px] h-[300px] rounded overflow-hidden border border-gray-200 shadow-md shadow-gray-400"
+        >
+          <div class="h-[140px]"><img class="object-cover h-full w-full" src="./images/5.avif" alt="" /></div>
+          <div class="p-2">
+            <p class="text-sm text-black">Something</p>
+            <p class="text-xs py-1 text-blackish">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid.</p>
+            <p class="text-primary">$100</p>
+            <div class="text-center"><button class="bg-primary rounded text-sm p-2 cursor-pointer">Add to Cart</button></div>
+          </div>
+        </div>
+
+        <div
+          class="card w-[170px] md:w-[200px] h-[300px] rounded overflow-hidden border border-gray-200 shadow-md shadow-gray-400"
+        >
+          <div class="h-[140px]"><img class="object-cover h-full w-full" src="./images/2.jpg" alt="" /></div>
+          <div class="p-2">
+            <p class="text-sm text-black">Something</p>
+            <p class="text-xs py-1 text-blackish">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid.</p>
+            <p class="text-primary">$100</p>
+            <div class="text-center"><button class="bg-primary rounded text-sm p-2 cursor-pointer">Add to Cart</button></div>
+          </div>
+        </div>
+
+        <div
+          class="card w-[170px] md:w-[200px] h-[300px] rounded overflow-hidden border border-gray-200 shadow-md shadow-gray-400"
+        >
+          <div class="h-[140px]"><img class="object-cover h-full w-full" src="./images/3.jpg" alt="" /></div>
+          <div class="p-2">
+            <p class="text-sm text-black">Something</p>
+            <p class="text-xs py-1 text-blackish">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid.</p>
+            <p class="text-primary">$100</p>
+            <div class="text-center"><button class="bg-primary rounded text-sm p-2 cursor-pointer">Add to Cart</button></div>
+          </div>
+        </div>
+
+        <div
+          class="card w-[170px] md:w-[200px] h-[300px] rounded overflow-hidden border border-gray-200 shadow-md shadow-gray-400"
+        >
+          <div class="h-[140px]"><img class="object-cover h-full w-full" src="./images/4.jpg" alt="" /></div>
+          <div class="p-2">
+            <p class="text-sm text-black">Something</p>
+            <p class="text-xs py-1 text-blackish">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid.</p>
+            <p class="text-primary">$100</p>
+            <div class="text-center"><button class="bg-primary rounded text-sm p-2 cursor-pointer">Add to Cart</button></div>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </section>
+    <!-- Main End -->
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
